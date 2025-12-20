@@ -114,7 +114,7 @@ export const DashboardPage: React.FC = () => {
             queryClient.invalidateQueries({ queryKey: ['tasks'] });
             toast.success('Task deleted successfully');
         },
-        onError: (error, variables, context) => {
+        onError: (_error, _variables, context) => {
             // Rollback on error
             if (context?.previousTasks) {
                 queryClient.setQueryData(
