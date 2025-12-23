@@ -5,12 +5,11 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
+# Copy Prisma schema (Needed for postinstall "prisma generate")
+COPY prisma ./prisma
+
 # Install dependencies
 RUN npm install
-
-# Copy Prisma schema
-COPY prisma ./prisma
 
 # Generate Prisma Client
 RUN npx prisma generate
