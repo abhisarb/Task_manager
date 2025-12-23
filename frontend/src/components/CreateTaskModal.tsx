@@ -69,15 +69,15 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ isOpen, onClos
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/50 backdrop-blur-sm animate-fade-in">
-            <div className="glass-card p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in">
-                <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/75 backdrop-blur-sm animate-fade-in">
+            <div className="bg-[#323940] rounded-xl shadow-2xl border border-[#738496]/20 p-8 w-full max-w-2xl max-h-[90vh] overflow-y-auto animate-scale-in text-[#b6c2cf]">
+                <h2 className="text-xl font-bold mb-6 text-[#b6c2cf]">
                     Create New Task
                 </h2>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-[#b6c2cf] mb-2">
                             Title <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -92,7 +92,7 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ isOpen, onClos
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-[#b6c2cf] mb-2">
                             Description <span className="text-red-500">*</span>
                         </label>
                         <textarea
@@ -107,7 +107,7 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ isOpen, onClos
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-[#b6c2cf] mb-2">
                             Due Date <span className="text-red-500">*</span>
                         </label>
                         <input
@@ -122,7 +122,7 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ isOpen, onClos
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-[#b6c2cf] mb-2">
                                 Priority <span className="text-red-500">*</span>
                             </label>
                             <select {...register('priority')} className="input-field">
@@ -137,7 +137,7 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ isOpen, onClos
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-[#b6c2cf] mb-2">
                                 Status <span className="text-red-500">*</span>
                             </label>
                             <select {...register('status')} className="input-field">
@@ -153,7 +153,7 @@ export const CreateTaskModal: React.FC<CreateTaskModalProps> = ({ isOpen, onClos
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-[#b6c2cf] mb-2">
                             Assign To
                         </label>
                         <select {...register('assignedToId')} className="input-field">

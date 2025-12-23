@@ -4,102 +4,187 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen;
+    @apply bg-[#1d2125] text-[#b6c2cf] min-h-screen overflow-hidden;
+    background-image: radial-gradient(circle at center, #23282e 0%, #1d2125 100%);
   }
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg rounded-xl;
+
+  /* Trello-like Column (List) */
+  .kanban-column {
+    @apply bg-[#101204] rounded-xl p-3 w-72 flex-shrink-0 flex flex-col max-h-full;
   }
 
+  /* Trello-like Card */
+  .kanban-card {
+    @apply bg-[#22272b] p-3 rounded-lg shadow-sm hover:ring-2 hover:ring-[#85b8ff] cursor-pointer mb-2 text-[#b6c2cf] transition-all duration-200 border border-transparent;
+  }
+
+  /* Buttons */
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-xl transform hover:scale-105 transition-all duration-200;
+    @apply bg-[#579dff] text-[#1d2125] font-semibold px-4 py-2 rounded-[3px] hover:bg-[#85b8ff] transition-colors duration-200 shadow-lg shadow-[#579dff]/20;
   }
 
   .btn-secondary {
-    @apply bg-white text-gray-700 font-semibold px-6 py-3 rounded-lg border border-gray-300 hover:bg-gray-50 hover:shadow-md transition-all duration-200;
+    @apply bg-[#22272b] text-[#b6c2cf] font-semibold px-4 py-2 rounded-[3px] hover:bg-[#A6C5E229] transition-colors duration-200;
   }
 
+  /* Inputs */
   .input-field {
-    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-all duration-200 outline-none;
+    @apply w-full px-3 py-2 bg-[#22272b] border-[#738496] rounded-[3px] text-[#b6c2cf] focus:border-[#85b8ff] focus:ring-2 focus:ring-[#85b8ff] outline-none transition-all duration-200;
   }
 
+  /* Badges - Adjusted for dark mode */
   .badge-low {
-    @apply bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-[#164b35] text-[#b8f5d0] px-2 py-0.5 rounded text-xs font-semibold;
   }
 
   .badge-medium {
-    @apply bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-[#5f3811] text-[#fbeccb] px-2 py-0.5 rounded text-xs font-semibold;
   }
 
   .badge-high {
-    @apply bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-[#563630] text-[#f6d2ce] px-2 py-0.5 rounded text-xs font-semibold;
   }
 
   .badge-urgent {
-    @apply bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-medium;
+    @apply bg-[#ae2e24] text-[#ffffff] px-2 py-0.5 rounded text-xs font-semibold;
   }
 
-  .status-todo {
-    @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium;
+  /* Scrollbar styling for horizontal scroll */
+  .overflow-x-auto::-webkit-scrollbar {
+    height: 12px;
   }
 
-  .status-in-progress {
-    @apply bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium;
+  .overflow-x-auto::-webkit-scrollbar-track {
+    background: #0000003d;
+    border-radius: 6px;
   }
 
-  .status-review {
-    @apply bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium;
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #ffffff3d;
+    border-radius: 6px;
   }
 
-  .status-completed {
-    @apply bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium;
+  .kanban-column::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .kanban-column::-webkit-scrollbar-track {
+    background: #0000003d;
+    border-radius: 4px;
+  }
+
+  .kanban-column::-webkit-scrollbar-thumb {
+    background: #ffffff3d;
+    border-radius: 4px;
+  }
+
+  /* Calendar Overrides for Dark Theme */
+  .rbc-calendar {
+    @apply text-[#b6c2cf] font-sans;
+  }
+
+  .rbc-toolbar button {
+    @apply text-[#b6c2cf] border-[#738496] hover:bg-[#A6C5E229] hover:border-[#b6c2cf] transition-colors;
+    color: #b6c2cf !important;
+  }
+
+  .rbc-toolbar button:active,
+  .rbc-toolbar button.rbc-active {
+    @apply bg-[#579dff] text-[#1d2125] !important;
+    border-color: #579dff !important;
+  }
+
+  .rbc-header {
+    @apply border-b border-[#738496] text-[#9fadbc] font-semibold py-2;
+  }
+
+  .rbc-month-view,
+  .rbc-time-view,
+  .rbc-agenda-view {
+    @apply border border-[#738496] bg-[#1d2125];
+  }
+
+  .rbc-off-range-bg {
+    @apply bg-[#22272b];
+  }
+
+  .rbc-day-bg+.rbc-day-bg,
+  .rbc-month-row+.rbc-month-row {
+    @apply border-l border-[#738496];
+  }
+
+  .rbc-month-cell {
+    @apply text-[#b6c2cf];
+  }
+
+  .rbc-date-cell {
+    @apply text-[#b6c2cf] p-2;
+  }
+
+  .rbc-event {
+    @apply shadow-sm opacity-90 hover:opacity-100 transition-opacity;
+  }
+
+  .rbc-today {
+    @apply bg-[#22272b] !important;
+  }
+
+  /* Grid lines */
+  .rbc-day-bg {
+    @apply border-l border-[#738496];
+  }
+
+  .rbc-month-row {
+    @apply border-t border-[#738496];
   }
 }
 
 @layer utilities {
-  .animate-shimmer {
-    animation: shimmer 2s infinite;
+  .animate-blob {
+    animation: blob 10s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .animate-fade-in {
-    animation: fadeIn 0.3s ease-in;
+  .animation-delay-2000 {
+    animation-delay: 2s;
   }
 
-  .animate-scale-in {
-    animation: scaleIn 0.2s ease-out;
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  .glass-card {
+    @apply bg-[#22272b]/60 backdrop-blur-md border border-[#ffffff]/10 shadow-xl;
+  }
+
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   }
 }
 
-@keyframes shimmer {
+@keyframes blob {
   0% {
-    transform: translateX(-100%);
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.7;
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.2);
+    opacity: 0.5;
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.8);
+    opacity: 0.6;
   }
 
   100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1);
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.7;
   }
 }
