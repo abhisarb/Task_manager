@@ -6,7 +6,8 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+# Install dependencies
+RUN npm install
 
 # Copy Prisma schema
 COPY prisma ./prisma
