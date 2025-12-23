@@ -30,4 +30,5 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
 
 # Start application
 # Start application
-CMD ["/bin/sh", "-c", "npx prisma migrate deploy && npm start"]
+# Start application
+CMD ["/bin/sh", "-c", "npx prisma db push && npm start"]
